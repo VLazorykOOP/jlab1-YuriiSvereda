@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.Scanner;
 
 public class Task4 {
     private static char[] removeCharFromArr(char[] arr, int index){
@@ -11,35 +11,43 @@ public class Task4 {
         }
         return newArr;
     }
-    public static void test(){
-        String text = "qwert, jbnvm okgnnvj, vmkg adkf.";
+
+    private static String function(String text){
         char[] charArray = text.toCharArray();
         for(int i=0; i<charArray.length; i++) {
             if(i == 0 || charArray[i-1] == ' ') {
-                if(charArray[i] == 'a' ||
-                        charArray[i] == 'e' ||
-                        charArray[i] == 'u' ||
-                        charArray[i] == 'o' ||
-                        charArray[i] == 'i'
+                if(
+                        charArray[i] == 'a' ||
+                                charArray[i] == 'e' ||
+                                charArray[i] == 'u' ||
+                                charArray[i] == 'o' ||
+                                charArray[i] == 'i'
 
                 ){
-                    for(int j=i; j < charArray.length; j++){
-                        if(charArray[j] != ' ' && charArray[j] != ',' && charArray[j] != '.' )
-                            charArray[j] = ' ';
+                    for(int j=i; j < charArray.length; j++) {
+                        if (charArray[j] != ' '){
+                            charArray = removeCharFromArr(charArray, j);
+                            j--;
+                        }
 
-                        else
+                        else{
+                            charArray = removeCharFromArr(charArray, j);
+                            i--;
                             break;
+                        }
                     }
                 }
             }
         }
-        System.out.println(charArray);
-        for(int i=0; i<charArray.length; i++){
-            if(charArray[i]==' ' && (charArray[i+1]==' ' || charArray[i+1]==',' || charArray[i+1]=='.')){
-                charArray = removeCharFromArr(charArray, i);
-                i--;
-            }
-        }
-        System.out.println(charArray);
+        String newText = new String(charArray);
+        return newText;
+    }
+    public static void test(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("enter your text");
+        String text = scan.nextLine();
+        text = function(text);
+        System.out.println(text);
     }
 }
+
