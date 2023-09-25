@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Task2 {
-    static int[] getRandomArray(int arrayLength, int minVal, int maxVal){
+    private static int[] getRandomArray(int arrayLength, int minVal, int maxVal){
         int[] randomArray = new int[arrayLength];
         Random random = new Random();
 
@@ -11,22 +11,8 @@ public class Task2 {
         return  randomArray;
     }
 
-    /*static <T extends Comparable<T>> T[] addElementToArr(T[] arr, T newElement ){
-        if(arr != null){
-        int newLength = arr.length + 1;
-        T[] newArr = (T[]) new Comparable[newLength];
-        for(int i = 0; i < arr.length; i++){
-        newArr[i]=arr[i];
-        }
-        newArr[newArr.length - 1] = newElement;
-        }
-        else {
-            T[] newArr = (T[]) new Comparable[1];
-            newArr[0] = newElement;
-        }
-        return newArr;
-    }*/
-    static int[] addElementToArr(int[] arr, int newElement ) {
+
+    private static int[] addElementToArr(int[] arr, int newElement ) {
         int[] newArr = null;
         if (arr != null) {
             int newLength = arr.length + 1;
@@ -42,23 +28,23 @@ public class Task2 {
         return newArr;
     }
 
-    static int[] arrayDifference(int[] aArr, int[] bArr){
+    private static int[] arrayDifference(int[] aArr, int[] bArr){
         int [] resultArr = null;
-        int repeatCounter = 0;
+        boolean ifUnic = true;
         for(int i=0; i<aArr.length; i++){
             for(int j=0; j<bArr.length; j++){
             if(aArr[i]==bArr[j])
-                repeatCounter++;
+               ifUnic = false;
             }
-            if(repeatCounter == 0)
+            if(ifUnic)
                 resultArr = addElementToArr(resultArr, aArr[i]);
             else
-                repeatCounter=0;
+                ifUnic = true;
         }
         return  resultArr;
     }
 
-    static int findMinArrayValue(int[] arr){
+    private static int findMinArrayValue(int[] arr){
         int minValue = arr[0];
         for(int i=0; i<arr.length; i++){
             if(minValue>arr[i])
@@ -66,7 +52,7 @@ public class Task2 {
         }
         return minValue;
     }
-     static void printArr(int[] arr){
+    private static void printArr(int[] arr){
         for(int i=0; i<arr.length; i++){
             System.out.print(arr[i] + "\t");
         }

@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 public class Task1 {
-    public static double doubleDoubleFunction(double a, double b){
+    private static double doubleDoubleFunction(double a, double b){
         double result = 0;
         result =  (((a*b - (a + b)*(a - b))/(Math.pow(b, 4) + Math.pow(a, 3))) + 5*b);
         return result;
     }
-    public static double intDoubleFunction(int a, int b){
+    private static double intDoubleFunction(int a, int b){
         double result = 0;
         result =  (((a*b - (a + b)*(a - b))/(Math.pow(b, 4) + Math.pow(a, 3))) + 5*b);
         return result;
     }
-    public static int doubleIntFunction(double a, double b){
+    private static int doubleIntFunction(double a, double b){
         int result = 0;
         result =  (int)(((a*b - (a + b)*(a - b))/(Math.pow(b, 4) + Math.pow(a, 3))) + 5*b);
         return result;
